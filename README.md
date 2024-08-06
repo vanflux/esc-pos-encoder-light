@@ -1,4 +1,4 @@
-# EscPosEncoder
+# EscPosEncoder Light
 
 Create a set of commands that can be send to any receipt printer that supports ESC/POS.
 
@@ -139,7 +139,7 @@ Before choosing a code page, check the technical manual of your printer which co
 
 #### Advanced text compositing
 
-For some languages it might even be better to print text as an image, because receipt printers do not support advanced text compositing required by some languages, such as Arabic. You can do this by creating a Canvas and drawing your text on there. When finished, you can then use the canvas as a parameter of the `.image()` method to send it to the printer.
+For some languages it might even be better to print text as an image, because receipt printers do not support advanced text compositing required by some languages, such as Arabic. You can do this by creating a image data ({ width, height, data }) and drawing your text on there. When finished, you can then use the image data as a parameter of the `.image()` method to send it to the printer.
 
 #### Code page mappings
 
@@ -579,7 +579,7 @@ For example:
 
 Print an image. The image is automatically converted to black and white and can optionally be dithered using different algorithms.
 
-The first parameter is the image itself. When running in the browser it can be any element that can be drawn onto a canvas, like an img, svg, canvas and video elements. When on Node it can be a Canvas provided by the `canvas` package. 
+The first parameter is the image itself ({ width, height, data }).
 
 The second parameter is the width of the image on the paper receipt in pixels. It must be a multiple of 8.
 
