@@ -1,6 +1,6 @@
 {
   "name": "esc-pos-encoder-light",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Create a set of commands that can be send to any receipt printer that supports ESC/POS",
   "type": "module",
   "exports": {
@@ -14,6 +14,7 @@
   },
   "main": "dist/esc-pos-encoder.cjs",
   "module": "dist/esc-pos-encoder.mjs",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "rollup -c",
     "lint": "eslint --fix src/esc-pos-encoder.js",
@@ -44,7 +45,8 @@
     "eslint": "^8.39.0",
     "eslint-config-google": "^0.14.0",
     "mocha": "^10.2.0",
-    "rollup": "^3.20.7"
+    "rollup": "^3.20.7",
+    "rollup-plugin-copy": "^3.5.0"
   },
   "dependencies": {
     "canvas-dither": "^1.0.1",

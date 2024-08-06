@@ -1,6 +1,7 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import terser from '@rollup/plugin-terser';
+import copy from 'rollup-plugin-copy';
 
 export default [
 
@@ -29,7 +30,12 @@ export default [
 		plugins: [
 			resolve({ browser: true }), 
 			commonjs(),
-            terser()
+            terser(),
+			copy({
+				targets: [
+					{ src: 'src/index.d.ts', dest: 'dist' },
+				]
+			})
 		]
 	},
 
