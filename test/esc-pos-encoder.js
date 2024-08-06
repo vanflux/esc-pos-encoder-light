@@ -1,5 +1,4 @@
 import EscPosEncoder from '../src/esc-pos-encoder.js';
-import { createCanvas } from 'canvas';
 import { assert, expect } from 'chai';
 
 
@@ -216,12 +215,12 @@ describe('EscPosEncoder', function() {
     });
 
     describe('image(canvas, 8, 8) - with a black pixel at 0,0 (legacy)', function () {
-        let canvas = createCanvas(8, 8);
-        let context = canvas.getContext('2d');
-        context.fillStyle = 'rgba(0, 0, 0, 1)';
-        context.fillRect( 0, 0, 1, 1 );
-
-        let result = rasterEncoder.image(canvas, 8, 8).encode();
+        const image = {
+            width: 8,
+            height: 8,
+            data: new Uint8ClampedArray([0, 0, 0, 255, ...new Array((8 * 8) * 4).fill(255)]),
+        }
+        let result = rasterEncoder.image(image, 8, 8).encode();
                 
         it('should be [ 29, 118, 48, 0, 1, 0, 8, 0, 128, 0, 0, 0, 0, 0, 0, 0 ]', function () {
             assert.deepEqual(new Uint8Array([ 29, 118, 48, 0, 1, 0, 8, 0, 128, 0, 0, 0, 0, 0, 0, 0 ]), result);
@@ -229,12 +228,12 @@ describe('EscPosEncoder', function() {
     });
 
     describe('image(canvas, 8, 8) - with a black pixel at 0,0', function () {
-        let canvas = createCanvas(8, 8);
-        let context = canvas.getContext('2d');
-        context.fillStyle = 'rgba(0, 0, 0, 1)';
-        context.fillRect( 0, 0, 1, 1 );
-
-        let result = encoder.image(canvas, 8, 8).encode();
+        const image = {
+            width: 8,
+            height: 8,
+            data: new Uint8ClampedArray([0, 0, 0, 255, ...new Array((8 * 8) * 4).fill(255)]),
+        }
+        let result = encoder.image(image, 8, 8).encode();
                 
         it('should be [ 27, 51, 36, 27, 42, 33, 8, 0, 128, 0, 0, 0, 0, ... ]', function () {
             assert.deepEqual(new Uint8Array([27, 51, 36, 27, 42, 33, 8, 0, 128, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 27, 50]), result);

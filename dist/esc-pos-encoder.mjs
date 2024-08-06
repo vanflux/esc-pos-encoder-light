@@ -1,5 +1,4 @@
 import linewrap from 'linewrap';
-import { createCanvas } from 'canvas';
 import Dither from 'canvas-dither';
 import Flatten from 'canvas-flatten';
 import CodepageEncoder from 'codepage-encoder';
@@ -1176,7 +1175,7 @@ class EscPosEncoder {
   /**
      * Image
      *
-     * @param  {object}         element  an element, like a canvas or image that needs to be printed
+     * @param  {object}         image  an image, image data that needs to be printed
      * @param  {number}         width  width of the image on the printer
      * @param  {number}         height  height of the image on the printer
      * @param  {string}         algorithm  the dithering algorithm for making the image black and white
@@ -1184,7 +1183,7 @@ class EscPosEncoder {
      * @return {object}                  Return the object, for easy chaining commands
      *
      */
-  image(element, width, height, algorithm, threshold) {
+  image(image, width, height, algorithm, threshold) {
     if (this._embedded) {
       throw new Error('Images are not supported in table cells or boxes');
     }
@@ -1204,11 +1203,6 @@ class EscPosEncoder {
     if (typeof threshold === 'undefined') {
       threshold = 128;
     }
-
-    const canvas = createCanvas(width, height);
-    const context = canvas.getContext('2d');
-    context.drawImage(element, 0, 0, width, height);
-    let image = context.getImageData(0, 0, width, height);
 
     image = Flatten.flatten(image, [0xff, 0xff, 0xff]);
 
