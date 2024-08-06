@@ -1,5 +1,7 @@
 # EscPosEncoder Light
 
+A fork from [this library](https://github.com/NielsLeenheer/EscPosEncoder) focused on remove canvas bloat, 200MB of trash.
+
 Create a set of commands that can be send to any receipt printer that supports ESC/POS.
 
 Before you use this library, you should also consider [ThermalPrinterEncoder](https://github.com/NielsLeenheer/ThermalPrinterEncoder), which is based on [EscPosEncoder](https://github.com/NielsLeenheer/EscPosEncoder), but also adds support for the StarPRNT language by using [StarPrntEncoder](https://github.com/NielsLeenheer/StarPrntEncoder). The API of ThermalPrinter is identical to this one and you should just be able to swap it out without any further changes.

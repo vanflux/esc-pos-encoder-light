@@ -1,6 +1,6 @@
 {
   "name": "esc-pos-encoder-light",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Create a set of commands that can be send to any receipt printer that supports ESC/POS",
   "type": "module",
   "exports": {
@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NielsLeenheer/EscPosEncoder.git"
+    "url": "git+https://github.com/vanflux/esc-pos-encoder-light.git"
   },
   "keywords": [
     "pos",
@@ -34,9 +34,9 @@
   "author": "Niels Leenheer",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/NielsLeenheer/EscPosEncoder/issues"
+    "url": "https://github.com/vanflux/esc-pos-encoder-light/issues"
   },
-  "homepage": "https://github.com/NielsLeenheer/EscPosEncoder#readme",
+  "homepage": "https://github.com/vanflux/esc-pos-encoder-light#readme",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^24.1.0",
     "@rollup/plugin-node-resolve": "^15.0.2",
