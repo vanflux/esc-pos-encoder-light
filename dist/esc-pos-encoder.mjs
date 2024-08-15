@@ -1303,15 +1303,34 @@ class EscPosEncoder {
       throw new Error('Cut is not supported in table cells or boxes');
     }
 
-    let data = 0x00;
+    const version = this._options?.custom?.cut?.version ?? 1;
 
-    if (value == 'partial') {
-      data = 0x01;
+    switch (version) {
+      case 1:
+        if (value == 'partial') {
+          this._queue([
+            0x1d, 0x56, 0x01,
+          ]);
+        } else {
+          this._queue([
+            0x1d, 0x56, 0x00,
+          ]);
+        }
+        break;
+      case 2:
+        if (value == 'partial') {
+          this._queue([
+            0x1b, 0x69,
+          ]);
+        } else {
+          this._queue([
+            0x1b, 0x6d,
+          ]);
+        }
+        break;
+      default:
+        throw new Error('Invalid cut version');
     }
-
-    this._queue([
-      0x1d, 0x56, data,
-    ]);
 
     return this;
   }

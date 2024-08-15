@@ -1,3 +1,11 @@
+type Options = {
+    imageMode?: "raster" | "column";
+    wordWrap?: boolean
+    custom?: {
+        cut?: { version ?: number };
+    }
+}
+
 type codepageType =
     | "cp437"
     | "cp737"
@@ -52,7 +60,7 @@ type deviceType = 0 | 1;
 type ImageData = { data: Uint8ClampedArray, width: number, height: number };
 
 declare class EscPosEncoder {
-    constructor();
+    constructor(options?: Options);
 
     align(value: alignType): EscPosEncoder;
 
